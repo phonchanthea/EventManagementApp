@@ -1,0 +1,22 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+@using EventManagementApp.Services
+@inject EventState EventState
+
+<PageTitle>Event Management</PageTitle>
+
+<div class="container">
+
+    <h1 class="mb-3">Event Management System</h1>
+
+    <p class="lead">
+        Browse our upcoming events and register for an event.
+    </p>
+
+    @foreach (var eventItem in EventState.Events)
+    {
+        <EventCard Event="eventItem" />
+    }
+
+</div>

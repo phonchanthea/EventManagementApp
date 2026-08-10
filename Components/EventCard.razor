@@ -1,0 +1,45 @@
+﻿@using EventManagementApp.Models
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+        <h3 class="card-title">@Event.Title</h3>
+
+        <p>
+            <strong>Location:</strong> @Event.Location
+        </p>
+
+        <p>
+            <strong>Date:</strong>
+            @Event.Date.ToString("MMMM dd, yyyy - hh:mm tt")
+        </p>
+
+        <p>
+            <strong>Attendance:</strong>
+            @Event.Attendees.Count / @Event.Capacity
+        </p>
+
+        <div class="mb-3">
+            <label class="form-label">Event Title</label>
+
+            <input class="form-control"
+                   @bind="Event.Title" />
+        </div>
+
+        <a class="btn btn-primary"
+           href="/register/@Event.Id">
+            Register
+        </a>
+
+        <a class="btn btn-secondary ms-2"
+           href="/attendance/@Event.Id">
+            Attendance
+        </a>
+
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public EventItem Event { get; set; } = default!;
+}
